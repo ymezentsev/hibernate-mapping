@@ -8,8 +8,6 @@ import org.hibernate.Transaction;
 import planet.Planet;
 import planet.PlanetCrudService;
 
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.List;
 
 public class TicketCrudService {
@@ -47,8 +45,6 @@ public class TicketCrudService {
             return;
         }
 
-        ticket.setCreatedAt(ZonedDateTime.now(ZoneId.systemDefault()));
-
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         session.persist(ticket);
@@ -79,7 +75,6 @@ public class TicketCrudService {
         Ticket ticketByID = session.get(Ticket.class, id);
         if (ticketByID != null) {
             ticketByID.setClient(client);
-            ticketByID.setCreatedAt(ZonedDateTime.now(ZoneId.systemDefault()));
             ticketByID.setFromPlanet(fromPlanet);
             ticketByID.setToPlanet(toPlanet);
             session.persist(ticketByID);

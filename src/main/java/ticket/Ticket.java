@@ -3,6 +3,7 @@ package ticket;
 import client.Client;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import planet.Planet;
 
 import java.time.ZonedDateTime;
@@ -13,6 +14,8 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
     private ZonedDateTime createdAt;
     @ManyToOne
