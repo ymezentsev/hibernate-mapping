@@ -8,6 +8,7 @@ import lombok.Data;
 public class Planet {
     @Id
     private String id;
+
     @Column
     private String name;
 }

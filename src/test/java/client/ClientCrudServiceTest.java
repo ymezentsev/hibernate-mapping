@@ -4,7 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.junit.jupiter.api.*;
+import planet.Planet;
 import storage.DatabaseInitService;
+import ticket.Ticket;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,6 +21,8 @@ class ClientCrudServiceTest {
     static void initDb() {
         sessionFactory = new Configuration()
                 .addAnnotatedClass(Client.class)
+                .addAnnotatedClass(Planet.class)
+                .addAnnotatedClass(Ticket.class)
                 .buildSessionFactory();
 
         new DatabaseInitService().initDb();
